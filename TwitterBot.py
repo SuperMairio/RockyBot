@@ -6,6 +6,7 @@ from topsecretfile import *
 from twython import Twython, TwythonError
 
 twitter = Twython(KEY, SECRET)
+# Make sure you create the database using DatabaseManagment.py first
 conn = sqlite3.connect('Usernames.db')
 
 def Get_Image(): 
@@ -18,17 +19,26 @@ def Get_Image():
 
 def Send_Image():
     image = Get_Image()
-    recipients = Get_Usernames()
-    response = twitter.upload_media(media=image ,media_type='image/jpeg', media_category='dmImage')
-    
+    getUsernames = Get_Usernames()
+    recipients = getUsernames[0]
+    privleges = getUsernames[1] #TODO: Create functionality
+
+    for(user in recipients):
+        message = twitter.send_direct_message(screen_name=user,media=image)
+
     shutil.move(image, USED_PHOTO_PATH)
 
 def Get_Usernames():
-    unamesArray = []
-    cursor = conn.execute("SELECT NAME FROM Username;")
+    unamesArray = [[],[]]
+    cursor = conn.execute("SELECT NAME FROM Usernames;")
+    cursor2 = conn.execute("SELECT ADMIN FROM Usernames;")
+
     for(row in cursor):
-        unamesArray.append(row)
+        unamesArray[0].append(row)
     
+    for(row2 in cursor2):
+        unamesArray[1].append(row2)
+
     return unamesArray
 
 if(KEY == 'abc'):

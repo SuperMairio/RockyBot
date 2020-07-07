@@ -18,18 +18,18 @@ def EditDB(x):
             x = 1            
         elif(userInput == 'c'):
             changePriv = input('What would you like to change their privilege to?\n(1= admin, 0= default):')
-            conn.execute('UPDATE Username set ADMIN = (?) WHERE NAME = (?)'(changePriv,name))
+            conn.execute('UPDATE Usernames set ADMIN = (?) WHERE NAME = (?)'(changePriv,name))
             conn.commit()
             x = 1
         elif(userInput == 'd'):
-            conn.execute("DELETE FROM Username WHERE NAME = (?)"(name))
+            conn.execute("DELETE FROM Usernames WHERE NAME = (?)"(name))
             conn.commit()
             x = 1
         else:
             print('That is not a recognised command')
 
 def ViewDB():
-    cursor = conn.execute("SELECT * FROM Username;")
+    cursor = conn.execute("SELECT * FROM Usernames;")
     for(row in cursor):
         print("Username:", row[0])
         print("Admin:", row[1])
