@@ -11,10 +11,11 @@ conn = sqlite3.connect('Usernames.db')
 
 def Get_Image(): 
     try:
-        for photo in os.listdir(PHOTO_PATH):
+        photos = os.listdir(PHOTO_PATH):
     except(SystemError): #TODO: Check this is the only error
-        for photo in os.listdir(USED_PHOTO_PATH)
-
+        photos = os.listdir(USED_PHOTO_PATH)
+    
+    photo = photos[0]
     return(photo)
 
 def Send_Image():
