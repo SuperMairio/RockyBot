@@ -26,6 +26,21 @@ def on_message(message):
     if message.content in msgList:
         reply = random.choice(replyList)     
         await message.channel.send(reply)
-    # Send cat photo here
+        send_Photo(Get_Photo)
+
+
+def Get_Photo(): 
+    try:
+        photos = os.listdir(PHOTO_PATH):
+    except(SystemError): #TODO: Check this is the only error
+        photos = os.listdir(USED_PHOTO_PATH)
+    
+    photo = random.choice(photos)
+    return(photo)
+
+def send_Photo(photo):
+    with open(photo, 'rb') as pic:
+        catPic = discord.File(pic)
+        await channel.send(catPic)
 
 rockyBot.run(TOKEN)
