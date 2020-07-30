@@ -22,7 +22,6 @@ replyList = [
     "Hope this helps!",
     "Rocky is proud of you, keep going!"
 ]
-channel = rockyBot.get_channel("general")
 
 @rockyBot.event
 async def on_ready():
@@ -33,12 +32,13 @@ async def on_message(message):
     photo = Get_Photo()
 
     if message.content in msgList:
-        reply = random.choice(replyList)     
-        #await message.channel.send(reply)
-        print(PHOTO_PATH+photo)
-        await channel.send(file=discord.File((PHOTO_PATH+photo)))
+        reply = random.choice(replyList)  
+        await rockyBot.wait_until_ready()
+        channel = rockyBot.get_channel(699710584328945745) # TODO: env var to define channel  
+        await message.channel.send(reply)
+        await channel.send(file=discord.File((PHOTO_PATH+"/"+photo)))
     
-    # shutil.move(PHOTO_PATH+photo, USED_PHOTO_PATH)
+    shutil.move(PHOTO_PATH+photo, USED_PHOTO_PATH)
 
 def Get_Photo(): 
     try:
@@ -49,13 +49,5 @@ def Get_Photo():
     photo = random.choice(photos)
     print(photo)
     return(photo)
-
-#@rockyBot.event
-#async def send_Photo(photo):
-#    with open(photo, 'rb') as pic:
-#        catPic = discord.File(pic)
-#        await channel.send(catPic)
-    
-#    shutil.move(photo, USED_PHOTO_PATH)
 
 rockyBot.run(TOKEN)
