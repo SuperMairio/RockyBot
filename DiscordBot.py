@@ -7,7 +7,7 @@ from discord.ext import commands
 TOKEN = os.getenv("DISCORDTOKEN")
 PHOTO_PATH = "/home/mairi/Documents/RockyBot/Rocky"
 USED_PHOTO_PATH = "/home/mairi/Documents/RockyBot/OldiesButGoldies"
-
+CHANNELID = os.getenv("CHANNELID")
 
 rockyBot = commands.Bot(command_prefix = "/")
 msgList = [
@@ -15,6 +15,7 @@ msgList = [
     "I miss Rocky",
     "Im stressed",
     "I want to see my boy",
+    "Where is my son",
     "test"
 ]
 replyList = [
@@ -34,7 +35,7 @@ async def on_message(message):
     if message.content in msgList:
         reply = random.choice(replyList)  
         await rockyBot.wait_until_ready()
-        channel = rockyBot.get_channel(699710584328945745) # TODO: env var to define channel  
+        channel = rockyBot.get_channel(CHANNELID)  
         await message.channel.send(reply)
         await channel.send(file=discord.File((PHOTO_PATH+"/"+photo)))
     
