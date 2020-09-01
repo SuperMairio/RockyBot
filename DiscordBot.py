@@ -9,6 +9,14 @@ PHOTO_PATH = os.getenv("PHOTOPATH")
 USED_PHOTO_PATH = os.getenv("USEDPHOTOPATH")
 CHANNELID = os.getenv("CHANNELID")
 
+if TOKEN == "abcd" or CHANNELID == "efgh":
+    print("You need to include your own tokens!")
+    exit(1)
+
+if not os.path.isdir(PHOTO_PATH) or not os.path.isdir(USED_PHOTO_PATH):
+    print("You need to create image folders!")
+    exit(1)
+
 rockyBot = commands.Bot(command_prefix = "/")
 msgList = [
     "Im sad",
