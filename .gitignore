@@ -1,7 +1,7 @@
-topsecretfile.py
 *.db
 OldiesButGoldies/
 Rocky/
+discord.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

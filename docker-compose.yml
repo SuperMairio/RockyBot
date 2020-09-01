@@ -1,0 +1,16 @@
+version: '3'
+
+# Cannot populate new pics from compose file, see:
+# https://stackoverflow.com/questions/37468788/what-is-the-right-way-to-add-data-to-an-existing-named-volume-in-docker
+volumes:
+  newPics:
+  oldPics:
+
+services:
+  rockyBot:
+    volumes:
+      - newPics:/Photos:rw
+      - oldPics:/UsedPhotos:rw
+    env_file:
+      - discord.env
+      - photopaths.env
