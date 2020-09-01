@@ -5,8 +5,8 @@ import discord
 from discord.ext import commands
 
 TOKEN = os.getenv("DISCORDTOKEN")
-PHOTO_PATH = "/home/mairi/Documents/RockyBot/Rocky"
-USED_PHOTO_PATH = "/home/mairi/Documents/RockyBot/OldiesButGoldies"
+PHOTO_PATH = os.getenv("PHOTOPATH")
+USED_PHOTO_PATH = os.getenv("USEDPHOTOPATH")
 CHANNELID = os.getenv("CHANNELID")
 
 rockyBot = commands.Bot(command_prefix = "/")
