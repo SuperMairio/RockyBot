@@ -44,10 +44,8 @@ async def on_message(message):
         reply = random.choice(replyList)  
         await rockyBot.wait_until_ready()
         channel = rockyBot.get_channel(CHANNELID)  
-        await message.channel.send(reply)
-        await channel.send(file=discord.File((PHOTO_PATH+"/"+photo)))
-    
-    shutil.move(PHOTO_PATH+photo, USED_PHOTO_PATH)
+        await message.channel.send(reply,file=discord.File(PHOTO_PATH+"/"+photo))
+        shutil.move(PHOTO_PATH+"/"+photo, USED_PHOTO_PATH)
 
 def Get_Photo(): 
     try:
