@@ -1,4 +1,4 @@
-#RockyBot
+# RockyBot
 
 A bot that automates sending cat photos. Make sure you are cloning the correct branch, one is for discord and another twitter. Discord-Docker branch contains dockerfiles for containerising the bot.
 
