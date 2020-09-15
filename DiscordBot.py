@@ -48,11 +48,12 @@ async def on_message(message):
         shutil.move(PHOTO_PATH+"/"+photo, USED_PHOTO_PATH)
 
 def Get_Photo(): 
-    try:
-        photos = os.listdir(PHOTO_PATH)
-    except(SystemError): #TODO: Check this is the only error
+    photos = os.listdir(PHOTO_PATH)
+
+    if not photos:
         photos = os.listdir(USED_PHOTO_PATH)
     
+
     photo = random.choice(photos)
     print(photo)
     return(photo)
