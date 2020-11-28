@@ -4,4 +4,4 @@ Discord-Docker branch contains dockerfiles for containerising the bot.
 
 (Twitter bot still a WIP until I can get API keys)
 You can see my blog posts about this project on my website:
-https://1320071.github.io/
+https://supermairio.github.io/
